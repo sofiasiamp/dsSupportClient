@@ -1,0 +1,20 @@
+Package: datashieldDescriptives
+Type: Package
+Title: DataSHIELD desctiptive functions
+Version: 0.1.0
+Author: Sofia Siampani
+Description: This package helps running DataSHIELD descriptive statistics in all Opal connections
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.1)
+Imports:
+  dsBaseClient (>= 6.1.0),
+  dplyr (>= 1.0.2),
+  plyr,
+  tibble,
+  tidyr,
+  DSI,
+Suggests:
+  rmarkdown
+RoxygenNote: 7.1.2
