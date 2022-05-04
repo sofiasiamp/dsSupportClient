@@ -18,3 +18,5 @@ Imports:
 Suggests:
   rmarkdown
 RoxygenNote: 7.1.2
+URL: https://github.com/sofiasiamp/datashieldDescriptives
+BugReports: https://github.com/sofiasiamp/datashieldDescriptives/issues
