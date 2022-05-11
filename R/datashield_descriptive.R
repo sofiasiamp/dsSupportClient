@@ -24,7 +24,7 @@ datashield_descriptive<-
     y$rn <- rownames(y)
     join[[p]]<- y
   }
-  summary <- join_all(join, by = 'rn', type="full")
+  summary <- plyr::join_all(join, by = 'rn', type="full")
   rownames(summary) <- summary$rn
   summary$rn <-NULL
   return(summary)
