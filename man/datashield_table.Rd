@@ -4,10 +4,12 @@
 \alias{datashield_table}
 \title{Table function for categorical data}
 \usage{
-datashield_table(opal_connection)
+datashield_table(opal_connection, df = "D")
 }
 \arguments{
-\item{opal_connection}{}
+\item{opal_connection}{An opal connection}
+
+\item{df}{specifies the  df that was assigned in the login, default is "D"}
 }
 \value{
 runs the datashield function ds.table() on all categorical variables of all studies and outputs a table with the outcome

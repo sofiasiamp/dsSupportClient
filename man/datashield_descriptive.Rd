@@ -12,6 +12,8 @@ datashield_descriptive(dsfunction, opal_connection, save = FALSE, df = "D")
 \item{opal_connection}{An Opal connection}
 
 \item{save}{if TRUE, the output is saved in the working directory as a csv file}
+
+\item{df}{specifies the  df that was assigned in the login, default is "D"}
 }
 \value{
 A table with the output of the function, if more than one study, they are joined in one table
