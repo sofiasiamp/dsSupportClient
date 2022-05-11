@@ -5,6 +5,7 @@
 #' DataSHIELD aggregate functions providing an improved overview for a DataSHIELD analyst.
 #' @param dsfunction The function you want to run (ds.class, ds.numNA, ds.length)
 #' @param opal_connection An Opal connection
+#' @param df data.frame
 #' @param save if TRUE, the output is saved in the working directory as a csv file
 #' @return A table with the output of the function, if more than one study, they are joined in one table
 #' @author Sofia Siampani (MDC), Florian Schwarz (DIfE)
