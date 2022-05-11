@@ -3,3 +3,5 @@
 export(datashield_descriptive)
 export(datashield_summary)
 export(datashield_table)
+import(dplyr)
+import(plyr)

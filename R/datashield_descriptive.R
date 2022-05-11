@@ -6,7 +6,7 @@
 #'
 #' @return A table with the output of the function, if more than one study, they are joined in one table
 #' @export
-#'
+#' @import plyr
 #' @examples datashield_descriptive(ds.class, opals)
 datashield_descriptive<-
   function(dsfunction, opal_connection, save = FALSE, df = "D") {

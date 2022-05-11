@@ -4,7 +4,7 @@
 \alias{datashield_descriptive}
 \title{DataSHIELD descriptive function}
 \usage{
-datashield_descriptive(dsfunction, opal_connection, save = FALSE)
+datashield_descriptive(dsfunction, opal_connection, save = FALSE, df = "D")
 }
 \arguments{
 \item{dsfunction}{The function you want to run (ds.class, ds.numNA, ds.length)}

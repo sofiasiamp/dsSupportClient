@@ -4,7 +4,7 @@
 #'
 #' @return runs the datashield function ds.table() on all categorical variables of all studies and outputs a table with the outcome
 #' @export
-#'
+#' @import dplyr
 #' @examples ds.table(opals)
 datashield_table <- function(opal_connection){
   classes <- datashield_descriptive(ds.class, opal_connection)
