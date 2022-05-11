@@ -10,8 +10,6 @@
 #' @examples datashield_descriptive(ds.class, opals)
 datashield_descriptive<-
   function(dsfunction, opal_connection, save = FALSE) {
-  if (!require(plyr)) install.packages('plyr')
-  library(plyr)
   summary <-data.frame()
   join <- list()
   for (p in 1:length(opal_connection)){

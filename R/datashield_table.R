@@ -1,11 +1,12 @@
-
-# This function takes a list of variable names (they have to be categorical) and an opal connection as an argument, 
-# runs the datashield function ds.table() on all studies and outputs a table with the outcome
-
+#' Table function for categorical data
+#'
+#' @param opal_connection
+#'
+#' @return runs the datashield function ds.table() on all categorical variables of all studies and outputs a table with the outcome
+#' @export
+#'
+#' @examples ds.table(opals)
 datashield_table <- function(opal_connection){
-  if (!require(dplyr)) install.packages('dplyr')
-  library(dplyr)
-  source(paste0("/home/",username,"/DataSHIELD/Netzlaufwerke/T_DataSHIELD/Projekte/INTIMIC/Functions/datashield_descriptive.R"))
   classes <- datashield_descriptive(ds.class, opal_connection)
   classes <- classes %>% filter_all(any_vars(.=="factor"))
   variables <- rownames(classes)
