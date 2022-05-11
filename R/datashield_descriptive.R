@@ -9,16 +9,16 @@
 #'
 #' @examples datashield_descriptive(ds.class, opals)
 datashield_descriptive<-
-  function(dsfunction, opal_connection, save = FALSE) {
+  function(dsfunction, opal_connection, save = FALSE, df = "D") {
   summary <-data.frame()
   join <- list()
   for (p in 1:length(opal_connection)){
     y <-data.frame()
     study <- opal_connection[p]
-    col <- ds.colnames("D",study)
+    col <- ds.colnames(df,study)
     colNames <- paste0(paste0(opal_connection[[p]]@name),".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
     for(i in col[[1]]) {
-      var <- paste0("D$",i)
+      var <- paste0(df,"$",i)
       y[i,colNames] <- dsfunction(var, datasources= study)[1]
     }
     y$rn <- rownames(y)
