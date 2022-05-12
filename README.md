@@ -30,24 +30,6 @@ remotes::install_github("sofiasiamp/datashieldDescriptives")
 This is a basic example on how to use it:
 
 ``` r
-library(datashieldDescriptives)
-#> Warning: replacing previous import 'dplyr::failwith' by 'plyr::failwith' when
-#> loading 'datashieldDescriptives'
-#> Warning: replacing previous import 'dplyr::id' by 'plyr::id' when loading
-#> 'datashieldDescriptives'
-#> Warning: replacing previous import 'dplyr::summarize' by 'plyr::summarize' when
-#> loading 'datashieldDescriptives'
-#> Warning: replacing previous import 'dplyr::count' by 'plyr::count' when loading
-#> 'datashieldDescriptives'
-#> Warning: replacing previous import 'dplyr::desc' by 'plyr::desc' when loading
-#> 'datashieldDescriptives'
-#> Warning: replacing previous import 'dplyr::mutate' by 'plyr::mutate' when
-#> loading 'datashieldDescriptives'
-#> Warning: replacing previous import 'dplyr::arrange' by 'plyr::arrange' when
-#> loading 'datashieldDescriptives'
-#> Warning: replacing previous import 'dplyr::rename' by 'plyr::rename' when
-#> loading 'datashieldDescriptives'
-#> Warning: replacing previous import 'dplyr::summarise' by 'plyr::summarise' when
-#> loading 'datashieldDescriptives'
+#library(datashieldDescriptives)
 #datashield_descriptive(dsfunction = ds.class, opal_connection = opals, df = "D")
 ```
