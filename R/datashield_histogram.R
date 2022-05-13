@@ -1,6 +1,7 @@
 #' DataSHIELD helper function for histograms
 #'
 #' @param opal_connection An Opal connection
+#' @param method
 #'
 #' @return It creates a directory with subdirectories of each study, containing histograms of all variables
 #' @export
