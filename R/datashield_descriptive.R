@@ -7,16 +7,26 @@
 #' @param opal_connection An Opal connection
 #' @param df data.frame
 #' @param save if TRUE, the output is saved in the working directory as a csv file
+<<<<<<< HEAD
+=======
+#' @param df specifies the  df that was assigned in the login, default is "D"
+#'
+>>>>>>> dff01e7a9f1570d06d2d2c91841336dbff2c9bcf
 #' @return A table with the output of the function, if more than one study, they are joined in one table
 #' @author Sofia Siampani (MDC), Florian Schwarz (DIfE)
 #' @export
-#'
+#' @import plyr
 #' @examples datashield_descriptive(ds.class, opals)
+<<<<<<< HEAD
 #'
 
 
 datashield_descriptive <- function(dsfunction, opal_connection, df = "D", save = FALSE){
 
+=======
+datashield_descriptive<-
+  function(dsfunction, opal_connection, save = FALSE, df = "D") {
+>>>>>>> dff01e7a9f1570d06d2d2c91841336dbff2c9bcf
   summary <-data.frame()
   join <- list()
 
@@ -29,7 +39,10 @@ datashield_descriptive <- function(dsfunction, opal_connection, df = "D", save =
     y <-data.frame()
 
     for(i in col[[1]]) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> dff01e7a9f1570d06d2d2c91841336dbff2c9bcf
       var <- paste0(df,"$",i)
       y[i,colNames] <- dsfunction(var, datasources= study)[1]
     }
@@ -37,7 +50,10 @@ datashield_descriptive <- function(dsfunction, opal_connection, df = "D", save =
     y$rn <- rownames(y)
     join[[p]]<- y
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> dff01e7a9f1570d06d2d2c91841336dbff2c9bcf
   summary <- plyr::join_all(join, by = 'rn', type="full")
   rownames(summary) <- summary$rn
   summary$rn <-NULL
