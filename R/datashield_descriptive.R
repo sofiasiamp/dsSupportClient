@@ -5,26 +5,33 @@
 #' DataSHIELD aggregate functions providing an improved overview for a DataSHIELD analyst.
 #' @param dsfunction The function you want to run (ds.class, ds.numNA, ds.length)
 #' @param opal_connection An Opal connection
-#' @param df data.frame
+#' @param df a data.frame on the server-side
 #' @param save if TRUE, the output is saved in the working directory as a csv file
 #' @return A table with the output of the function, if more than one study, they are joined in one table
-#' @author Sofia Siampani (MDC), Florian Schwarz (DIfE)
+#' @author Sofia Siampani (Max-Delbrueck-Center Berlin), Florian Schwarz (German Institute of Human Nutrition)
+#' @import plyr
 #' @export
-#'
-#' @examples datashield_descriptive(ds.class, opals)
+#' @examples datashield_descriptive(ds.class, opals, df = "D_Clean")
 #'
 
 
-datashield_descriptive <- function(dsfunction, opal_connection, df = "D", save = FALSE){
+datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NULL,  save = FALSE){
+
+
+  # look for DS connections
+  if(is.null(datasources)){
+    datasources <- datashield.connections_find()
+  }
+
 
   summary <-data.frame()
   join <- list()
 
-  for (p in 1:length(opal_connection)){
+  for (p in 1:length(datasources)){
 
-    study <- opal_connection[p]
+    study <- datasources[p]
     col <- ds.colnames(df,study)
-    colNames <- paste0(paste0(opal_connection[[p]]@name),".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
+    colNames <- paste0(paste0(datasources[[p]]@name),".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
 
     y <-data.frame()
 
