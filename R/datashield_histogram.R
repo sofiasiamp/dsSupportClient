@@ -1,3 +1,11 @@
+#' DataSHIELD helper function for histograms
+#'
+#' @param opal_connection An Opal connection
+#'
+#' @return It creates a directory with subdirectories of each study, containing histograms of all variables
+#' @export
+#'
+#' @examples datashield_histogram(opal_connection = opal_connection)
 datashield_histogram<- function(opal_connection) {
   dir.create("histograms")
   setwd("histograms")
@@ -18,4 +26,6 @@ datashield_histogram<- function(opal_connection) {
       }
     }
   }
+  setwd('..')
 }
+
