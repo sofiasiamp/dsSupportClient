@@ -4,12 +4,14 @@
 \alias{datashield_summary}
 \title{It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection}
 \usage{
-datashield_summary(opal_connection, save_summary = FALSE)
+datashield_summary(opal_connection, save_summary = FALSE, df = "D")
 }
 \arguments{
 \item{opal_connection}{An Opal connection}
 
 \item{save_summary}{if TRUE, the output is saved in the working directory as a csv file}
+
+\item{df}{specifies the  df that was assigned in the login, default is "D"}
 }
 \value{
 a list with the summary of each variable

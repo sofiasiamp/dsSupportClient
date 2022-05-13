@@ -6,16 +6,23 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of datashieldDescriptives is to run datashield descriptive
-functions in the entire dataset and in all studies connected.
+These R server-side functions where created to help automate the
+production of descriptive statistics by running already existing
+DataSHIELD functions on any number of harmonized datasets.
 
 ## Installation
 
-You can install the development version of datashieldDescriptives like
-so:
+First, you need to install the “remotes” package from CRAN:
 
 ``` r
-# Install by: 
+install.packages("remotes")
+library(remotes)
+```
+
+And then install this Github repository
+
+``` r
+remotes::install_github("sofiasiamp/datashieldDescriptives")
 ```
 
 ## Example
@@ -23,6 +30,6 @@ so:
 This is a basic example on how to use it:
 
 ``` r
-library(datashieldDescriptives)
-## datashield_descriptive(ds.class, opals)
+#library(datashieldDescriptives)
+#datashield_descriptive(dsfunction = ds.class, opal_connection = opals, df = "D")
 ```

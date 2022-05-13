@@ -3,20 +3,20 @@
 #'
 #' @param opal_connection An Opal connection
 #' @param save_summary if TRUE, the output is saved in the working directory as a csv file
-#'
+#' @param df specifies the  df that was assigned in the login, default is "D"
 #' @return a list with the summary of each variable
 #' @export
 #'
 #' @examples datashield_summary(opals)
 
-datashield_summary<- function(opal_connection, save_summary = FALSE) {
+datashield_summary<- function(opal_connection, save_summary = FALSE, df = "D") {
   summary <- list()
   for (p in 1:length(opal_connection)){
     y = data.frame()
     study <- opal_connection[p]
-    col <- ds.colnames("D",study)
+    col <- ds.colnames(df,study)
     for(i in col[[1]]) {
-      var <- paste0("D$",i)
+      var <- paste0(df,"$",i)
       a <- ds.class(var,study)
       if ((a== "numeric" || a== "integer") && ds.numNA(var,study)< ds.length(var, datasources = study)[[1]] ) {
         a<- unlist(ds.summary(var, datasources = study))
