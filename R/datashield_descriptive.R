@@ -87,7 +87,7 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
     study <- datasources[p]
     col <- ds.colnames(df,study)
-    colNames <- paste0(paste0(datasources[[p]]@name),".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
+    colNames <- paste0(datasources[[p]]@name,".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
 
     y <-data.frame()
 
