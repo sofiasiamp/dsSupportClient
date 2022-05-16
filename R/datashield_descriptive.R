@@ -85,15 +85,14 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
   for (p in 1:length(datasources)){
 
-    col <- ds.colnames(df,datasources[p])
     colNames <- paste0(datasources[[p]]@name,".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
 
     y <-data.frame()
 
-    for(i in col[[1]]) {
+    for(i in ds.colnames(df,datasources[p])[[1]]) {
 
       var <- paste0(df,"$",i)
-      y[i,colNames] <- dsfunction(var, datasources = datasources[p])[1]
+      y[i,colNames] <- dsfunction(var)[1]
     }
 
     y$rn <- rownames(y)
