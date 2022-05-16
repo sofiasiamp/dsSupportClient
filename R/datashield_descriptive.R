@@ -82,16 +82,16 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
 
   summary <- data.frame()
-  join <- list()
+  join    <- list()
 
   for (p in 1:length(datasources)){
 
     colNames <- paste0(datasources[[p]]@name,".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
 
 
-    y <-data.frame()
+    y <- data.frame()
 
-    for(i in ds.colnames(df,datasources[p])[[1]]) {
+    for(i in dsBaseClient::ds.colnames(df,datasources[p])[[1]]) {
 
       var <- paste0(df,"$",i)
       y[i,colNames] <- dsfunction(var)[1]
@@ -108,11 +108,9 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
   summary$rn <- NULL
 
 
-  #function.name <- as.character(dsfunction)
-
   if (save == TRUE){
     write.csv(summary, file = paste0(as.character(substitute(dsfunction)),"_overview.csv"), row.names = TRUE)
-    print(paste0("The overview file", paste0("'",as.character(substitute(dsfunction)),"_overview.csv'")," has been saved at ",getwd(), "."))
+    print(paste0("The overview file ", paste0("'",as.character(substitute(dsfunction)),"_overview.csv'")," has been saved at ",getwd(), "."))
   }
 
   return(summary)
