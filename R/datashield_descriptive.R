@@ -1,19 +1,19 @@
 #'
-#' @title Descriptive function for DataSHIELD
+#' @title Descriptive function for DataSHIELD analysts
 #' @description The function summarises the outcome of variable-level aggregate DataSHIELD functions.
 #' @details datashield_descriptive functions creates summaries for all variables in a data.frame with respect to certain
-#' DataSHIELD aggregate functions providing an improved overview for a DataSHIELD analyst.
-#' @param dsfunction The DataSHIELD function you want to run (e.g. ds.class)
-#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#' DataSHIELD aggregate functions providing an improved overview for the DataSHIELD analyst.
+#' @param dsfunction The aggregate DataSHIELD function you want to run to receive information (e.g. ds.class).
+#' @param datasources A list of \code{\link{DSConnection-class}} objects obtained after login.
 #' If the \code{datasources} argument is not specified the default set of connections will be
 #' used: see \code{\link{datashield.connections_default}}.
-#' @param df a data.frame on the server-side
-#' @param save if TRUE, the output is saved in the working directory as a csv file
-#' @return A table with the output of the function, if more than one study, they are joined in one table
+#' @param df A data.frame on the server-side.
+#' @param save If TRUE, the output is saved in the working directory as a csv file.
+#' @return A table with the output of the function. If more than one study is connected, they are joined in one table.
 #' @author Sofia Siampani (Max-Delbrueck-Center), Florian Schwarz (German Institute of Human Nutrition)
 #' @import plyr
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #'
 #' # Version 1.0
 #' # Connecting to Opal Servers
@@ -73,10 +73,11 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
 
   if(is.null(dsfunction)){
-    stop("You need to specify a DataSHIELD function.")
+    stop("You need to specify an aggregate DataSHIELD function.")
   }
 
 
+  #Check whether object are present in all datasources
   defined <- dsBaseClient:::isDefined(datasources, df)
 
 
@@ -87,23 +88,28 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
     colNames <- paste0(datasources[[p]]@name,".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
 
+
     y <-data.frame()
 
     for(i in ds.colnames(df,datasources[p])[[1]]) {
 
       var <- paste0(df,"$",i)
       y[i,colNames] <- dsfunction(var)[1]
+
     }
 
     y$rn <- rownames(y)
     join[[p]] <- y
+
   }
 
-  summary <- plyr::join_all(join, by = 'rn', type="full")
-
+  summary <- plyr::join_all(join, by = "rn", type = "full")
   rownames(summary) <- summary$rn
-
   summary$rn <- NULL
+
+  if (save == TRUE){
+    write.csv(x = summary, file = paste0(dsfunction,"_overview.csv") ,row.names = TRUE)
+  }
 
   return(summary)
 }
