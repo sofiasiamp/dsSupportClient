@@ -111,8 +111,8 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
   #function.name <- as.character(dsfunction)
 
   if (save == TRUE){
-    write.csv(summary, file = as.character(paste0("functionname","_overview.csv")), row.names = TRUE)
-    print(paste0("The overview file has been saved at ",getwd(), " ."))
+    write.csv(summary, file = as.character(paste0(as.character(substitute(dsfunction)),"_overview.csv")), row.names = TRUE)
+    print(paste0("The overview file has been saved at ",getwd(), "."))
   }
 
   return(summary)
