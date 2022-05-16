@@ -1,4 +1,8 @@
-
+#'
+#' @title Descriptive function for DataSHIELD
+#' @description The function summarises the outcome of variable-level aggregate DataSHIELD functions.
+#' @details datashield_descriptive functions creates summaries for all variables in a data.frame with respect to certain
+#' DataSHIELD aggregate functions providing an improved overview for a DataSHIELD analyst.
 #' It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection
 #'
 #' @param opal_connection An Opal connection
