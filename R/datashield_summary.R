@@ -1,14 +1,16 @@
 #'
-#' @title Descriptive function for DataSHIELD
-#' @description The function summarises the outcome of variable-level aggregate DataSHIELD functions.
-#' @details datashield_descriptive functions creates summaries for all variables in a data.frame with respect to certain
-#' DataSHIELD aggregate functions providing an improved overview for a DataSHIELD analyst.
-#' It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection
-#'
-#' @param opal_connection An Opal connection
-#' @param save_summary if TRUE, the output is saved in the working directory as a csv file
-#'
+#' @title Executes ds.summary function for variables in a data.frame
+#' @description The function executes the ds.summary function for all numeric or integer variables of a data.frame.
+#' @details datashield_summary analyses the classes of variables of a server-side data.frame and executes the ds.summary
+#' function for all variables which are of type 'numeric' or 'integer'. Additionally, it also provides the standard deviation
+#' for those variables.
+#' @param datasources A list of \code{\link{DSConnection-class}} objects obtained after login.
+#' If the \code{datasources} argument is not specified the default set of connections will be
+#' used: see \code{\link{datashield.connections_default}}.
+#' @param df A data.frame on the server-side.
+#' @param save if TRUE, the output is saved in the working directory as a csv file
 #' @return a list with the summary of each variable
+#' @author Sofia Siampani (Max-Delbrueck-Center), Florian Schwarz (German Institute of Human Nutrition)
 #' @examples
 #' \dontrun{
 #'
@@ -41,12 +43,7 @@
 #' connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D")
 #'
 #' # Retrieving information on variable classes in the specified data.frame
-#' datashield_summary(df = "D", dsfunction = ds.class)
-#'
-#'
-#' # Retrieving information on how many NAs are present in each variable in the specified data.frame
-#' datashield_descriptive(df = "D", dsfunction = ds.numNA)
-#'
+#' datashield_summary(df = "D", save = TRUE)
 #'
 #' # Clear the Datashield R sessions and logout
 #' datashield.logout(connections)
@@ -83,19 +80,19 @@ datashield_summary<- function(df = "D", datasources = NULL, save = FALSE){
 
     for (i in dsBaseClient::ds.colnames(df)[[1]]){
 
-      var <- paste0(df,"$",i)
-      a <- dsBaseClient::ds.class(var)
+      variable <- paste0(df,"$",i)
+      a <- dsBaseClient::ds.class(variable)
 
-      if ((a == "numeric" || a == "integer") && (dsBaseClient::ds.numNA(var) < dsBaseClient::ds.length(var)[[1]])){
-        a <- unlist(dsBaseClient::ds.summary(var))
-        y[i, c(names(a),"Standard deviation")] <- c(a, sqrt(dsBaseClient::ds.var(var)[["Variance.by.Study"]][1]))
+      if ((a == "numeric" || a == "integer") && (dsBaseClient::ds.numNA(variable) < dsBaseClient::ds.length(variable)[[1]])){
+        a <- unlist(dsBaseClient::ds.summary(variable))
+        y[i, c(names(a),"Standard deviation")] <- c(a, sqrt(dsBaseClient::ds.var(variable)[["Variance.by.Study"]][1]))
       }
     }
 
     summary[[as.name(paste0(datasources[[p]]@name))]] <- y
     if (save == TRUE){
       write.csv(as.matrix(y), paste0(datasources[[p]]@name,"_summary.csv"), row.names = TRUE)
-      print(paste0("The summary file ", paste0(datasources[[p]]@name,"_summary.csv")," has been saved at ",getwd(), "."))
+      print(paste0("The summary file ", paste0("'",datasources[[p]]@name,"_summary.csv'")," has been saved at ",getwd(), "."))
     }
   }
 
