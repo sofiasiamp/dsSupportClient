@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-These R server-side functions where created to help automate the
+These R client-side functions where created to help automate the
 production of descriptive statistics by running already existing
 DataSHIELD functions on any number of harmonized datasets.
 
