@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
 #'
 #' @title Executes ds.summary function for variables in a data.frame
 #' @description The function executes the ds.summary function for all numeric or integer variables of a data.frame.
@@ -13,17 +9,7 @@
 #' used: see \code{\link{datashield.connections_default}}.
 #' @param df A data.frame on the server-side.
 #' @param save if TRUE, the output is saved in the working directory as a csv file
-<<<<<<< HEAD
-=======
-
 #' It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection
-#'
-#' @param opal_connection An Opal connection
-#' @param save_summary if TRUE, the output is saved in the working directory as a csv file
-#' @param df specifies the  df that was assigned in the login, default is "D"
->>>>>>> 3412a23193bd2b5634b0772760b0fc35f3716065
-=======
->>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
 #' @return a list with the summary of each variable
 #' @author Sofia Siampani (Max-Delbrueck-Center), Florian Schwarz (German Institute of Human Nutrition)
 #' @examples
@@ -67,11 +53,6 @@
 #' @export
 #'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
 datashield_summary<- function(df = "D", datasources = NULL, save = FALSE){
 
 
@@ -105,23 +86,7 @@ datashield_summary<- function(df = "D", datasources = NULL, save = FALSE){
       if ((a == "numeric" || a == "integer") && (dsBaseClient::ds.numNA(variable) < dsBaseClient::ds.length(variable)[[1]])){
         a <- unlist(dsBaseClient::ds.summary(variable))
         y[i, c(names(a),"Standard deviation")] <- c(a, sqrt(dsBaseClient::ds.var(variable)[["Variance.by.Study"]][1]))
-<<<<<<< HEAD
-=======
-datashield_summary<- function(opal_connection, save_summary = FALSE, df = "D") {
-  summary <- list()
-  for (p in 1:length(opal_connection)){
-    y = data.frame()
-    study <- opal_connection[p]
-    col <- ds.colnames(df,study)
-    for(i in col[[1]]) {
-      var <- paste0(df,"$",i)
-      a <- ds.class(var,study)
-      if ((a== "numeric" || a== "integer") && ds.numNA(var,study)< ds.length(var, datasources = study)[[1]] ) {
-        a<- unlist(ds.summary(var, datasources = study))
-        y[i, c(names(a),"Standard deviation")] <- c(a,sqrt(ds.var(var, datasources = study)[["Variance.by.Study"]][1]))
->>>>>>> 3412a23193bd2b5634b0772760b0fc35f3716065
-=======
->>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
+
       }
     }
 

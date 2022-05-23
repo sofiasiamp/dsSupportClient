@@ -1,9 +1,5 @@
 #' DataSHIELD descriptive function
 #'
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
 #' @title Descriptive function for DataSHIELD analysts
 #' @description The function summarises the outcome of variable-level aggregate DataSHIELD functions.
 #' @details datashield_descriptive functions creates summaries for all variables in a data.frame with respect to certain
@@ -101,49 +97,17 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
       variable <- paste0(df,"$",i)
       y[i,colNames] <- dsfunction(variable)[1]
 
-<<<<<<< HEAD
-=======
-#' @param dsfunction The function you want to run (ds.class, ds.numNA, ds.length)
-#' @param opal_connection An Opal connection
-#' @param save if TRUE, the output is saved in the working directory as a csv file
-#' @param df specifies the  df that was assigned in the login, default is "D"
-#'
-#' @return A table with the output of the function, if more than one study, they are joined in one table
-#' @export
-#' @import plyr
-#' @examples datashield_descriptive(ds.class, opals)
-datashield_descriptive<-
-  function(dsfunction, opal_connection, save = FALSE, df = "D") {
-  summary <-data.frame()
-  join <- list()
-  for (p in 1:length(opal_connection)){
-    y <-data.frame()
-    study <- opal_connection[p]
-    col <- ds.colnames(df,study)
-    colNames <- paste0(paste0(opal_connection[[p]]@name),".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
-    for(i in col[[1]]) {
-      var <- paste0(df,"$",i)
-      y[i,colNames] <- dsfunction(var, datasources= study)[1]
->>>>>>> 3412a23193bd2b5634b0772760b0fc35f3716065
-=======
->>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
+
     }
     y$rn <- rownames(y)
     join[[p]] <- y
 
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-  summary <- plyr::join_all(join, by = "rn", type = "full")
-=======
-  summary <- plyr::join_all(join, by = 'rn', type="full")
->>>>>>> 3412a23193bd2b5634b0772760b0fc35f3716065
-=======
 
   summary <- plyr::join_all(join, by = "rn", type = "full")
 
->>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
+
   rownames(summary) <- summary$rn
   summary$rn <- NULL
 
