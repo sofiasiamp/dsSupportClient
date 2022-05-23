@@ -1,6 +1,9 @@
 #' DataSHIELD descriptive function
 #'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
 #' @title Descriptive function for DataSHIELD analysts
 #' @description The function summarises the outcome of variable-level aggregate DataSHIELD functions.
 #' @details datashield_descriptive functions creates summaries for all variables in a data.frame with respect to certain
@@ -98,6 +101,7 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
       variable <- paste0(df,"$",i)
       y[i,colNames] <- dsfunction(variable)[1]
 
+<<<<<<< HEAD
 =======
 #' @param dsfunction The function you want to run (ds.class, ds.numNA, ds.length)
 #' @param opal_connection An Opal connection
@@ -121,17 +125,25 @@ datashield_descriptive<-
       var <- paste0(df,"$",i)
       y[i,colNames] <- dsfunction(var, datasources= study)[1]
 >>>>>>> 3412a23193bd2b5634b0772760b0fc35f3716065
+=======
+>>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
     }
     y$rn <- rownames(y)
     join[[p]] <- y
 
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   summary <- plyr::join_all(join, by = "rn", type = "full")
 =======
   summary <- plyr::join_all(join, by = 'rn', type="full")
 >>>>>>> 3412a23193bd2b5634b0772760b0fc35f3716065
+=======
+
+  summary <- plyr::join_all(join, by = "rn", type = "full")
+
+>>>>>>> 1f4aa41ef13195a9b4e03ed03171a8f968684c4f
   rownames(summary) <- summary$rn
   summary$rn <- NULL
 
