@@ -1,3 +1,4 @@
+#' DataSHIELD descriptive function
 #'
 #' @title Descriptive function for DataSHIELD analysts
 #' @description The function summarises the outcome of variable-level aggregate DataSHIELD functions.
@@ -97,13 +98,13 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
       y[i,colNames] <- dsfunction(variable)[1]
 
     }
-
     y$rn <- rownames(y)
     join[[p]] <- y
 
   }
 
   summary <- plyr::join_all(join, by = "rn", type = "full")
+
   rownames(summary) <- summary$rn
   summary$rn <- NULL
 
