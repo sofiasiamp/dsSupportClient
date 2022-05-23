@@ -1,4 +1,3 @@
-#' DataSHIELD descriptive function
 #'
 #' @title Descriptive function for DataSHIELD analysts
 #' @description The function summarises the outcome of variable-level aggregate DataSHIELD functions.
