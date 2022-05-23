@@ -15,7 +15,7 @@ Imports:
   plyr,
   tibble,
   tidyr,
-  DSI,
+  DSI
 Suggests:
   rmarkdown
 RoxygenNote: 7.1.2
