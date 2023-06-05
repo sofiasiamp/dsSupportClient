@@ -29,4 +29,6 @@ datashield_descriptive<-
   rownames(summary) <- summary$rn
   summary$rn <-NULL
   return(summary)
-}
+  }
+
+
