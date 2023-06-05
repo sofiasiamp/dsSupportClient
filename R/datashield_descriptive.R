@@ -30,5 +30,3 @@ datashield_descriptive<-
   summary$rn <-NULL
   return(summary)
   }
-
-
