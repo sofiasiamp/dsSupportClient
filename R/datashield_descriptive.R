@@ -29,8 +29,5 @@ datashield_descriptive<-
   rownames(summary) <- summary$rn
   summary$rn <-NULL
   return(summary)
-<<<<<<< HEAD
   }
-=======
-  }
->>>>>>> 3446cd5d7440567d08ca4ea1bb913692313f7a80
+
