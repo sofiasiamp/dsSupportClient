@@ -2,23 +2,70 @@
 % Please edit documentation in R/datashield_summary.R
 \name{datashield_summary}
 \alias{datashield_summary}
-\title{It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection}
+\title{Executes ds.summary function for variables in a data.frame}
 \usage{
-datashield_summary(opal_connection, save_summary = FALSE, df = "D")
+datashield_summary(df = "D", datasources = NULL, save = FALSE)
 }
 \arguments{
-\item{opal_connection}{An Opal connection}
+\item{df}{A data.frame on the server-side.}
 
-\item{save_summary}{if TRUE, the output is saved in the working directory as a csv file}
+\item{datasources}{A list of \code{\link{DSConnection-class}} objects obtained after login.
+If the \code{datasources} argument is not specified the default set of connections will be
+used: see \code{\link{datashield.connections_default}}.}
 
-\item{df}{specifies the  df that was assigned in the login, default is "D"}
+\item{save}{if TRUE, the output is saved in the working directory as a csv file
+It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection}
 }
 \value{
 a list with the summary of each variable
 }
 \description{
-It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection
+The function executes the ds.summary function for all numeric or integer variables of a data.frame.
+}
+\details{
+datashield_summary analyses the classes of variables of a server-side data.frame and executes the ds.summary
+function for all variables which are of type 'numeric' or 'integer'. Additionally, it also provides the standard deviation
+for those variables.
 }
 \examples{
-datashield_summary(opals)
+\dontrun{
+
+# Version 1.0
+# Connecting to Opal Servers
+
+# loading necessary packages
+require("DSI")
+require("DSOpal")
+require("dsBaseClient")
+require("datashieldDescriptives")
+
+builder <- DSI::newDSLoginBuilder()
+builder$append(server = "study1",
+               url = "http://192.168.56.100:8080/",
+               user = "administrator", password = "datashield_test&",
+               table = "CNSIM.CNSIM1", driver = "OpalDriver")
+builder$append(server = "study2",
+               url = "http://192.168.56.100:8080/",
+               user = "administrator", password = "datashield_test&",
+               table = "CNSIM.CNSIM2", driver = "OpalDriver")
+builder$append(server = "study3",
+               url = "http://192.168.56.100:8080/",
+               user = "administrator", password = "datashield_test&",
+               table = "CNSIM.CNSIM3", driver = "OpalDriver")
+
+logindata <- builder$build()
+
+# Log onto the remote Opal training servers
+connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D")
+
+# Retrieving information on variable classes in the specified data.frame
+datashield_summary(df = "D", save = TRUE)
+
+# Clear the Datashield R sessions and logout
+datashield.logout(connections)
+
+}
+}
+\author{
+Sofia Siampani (Max-Delbrueck-Center, Berlin), Florian Schwarz (German Institute of Human Nutrition, Potsdam-Rehbruecke)
 }

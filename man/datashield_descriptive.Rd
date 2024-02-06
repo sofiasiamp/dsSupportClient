@@ -2,25 +2,80 @@
 % Please edit documentation in R/datashield_descriptive.R
 \name{datashield_descriptive}
 \alias{datashield_descriptive}
-\title{DataSHIELD descriptive function}
+\title{Descriptive function for DataSHIELD analysts}
 \usage{
-datashield_descriptive(dsfunction, opal_connection, save = FALSE, df = "D")
+datashield_descriptive(
+  df = "D",
+  dsfunction = NULL,
+  datasources = NULL,
+  save = FALSE
+)
 }
 \arguments{
-\item{dsfunction}{The function you want to run (ds.class, ds.numNA, ds.length)}
+\item{df}{A data.frame on the server-side. Default is "D".}
 
-\item{opal_connection}{An Opal connection}
+\item{dsfunction}{The aggregate DataSHIELD function you want to run to receive information (e.g. ds.class).}
 
-\item{save}{if TRUE, the output is saved in the working directory as a csv file}
+\item{datasources}{A list of \code{\link{DSConnection-class}} objects obtained after login.
+If the \code{datasources} argument is not specified the default set of connections will be
+used: see \code{\link{datashield.connections_default}}.}
 
-\item{df}{specifies the  df that was assigned in the login, default is "D"}
+\item{save}{If TRUE, the output is saved in the working directory as a csv file.}
 }
 \value{
-A table with the output of the function, if more than one study, they are joined in one table
+A table with the output of the function. If more than one study is connected, they are joined in one table.
 }
 \description{
-DataSHIELD descriptive function
+The function summarises the outcome of variable-level aggregate DataSHIELD functions.
+}
+\details{
+datashield_descriptive functions creates summaries for all variables in a data.frame with respect to certain
+DataSHIELD aggregate functions providing an improved overview for the DataSHIELD analyst.
 }
 \examples{
-datashield_descriptive(ds.class, opals)
+\dontrun{
+
+# Version 1.0
+# Connecting to Opal Servers
+
+# loading necessary packages
+require("DSI")
+require("DSOpal")
+require("dsBaseClient")
+require("datashieldDescriptives")
+
+builder <- DSI::newDSLoginBuilder()
+builder$append(server = "study1",
+               url = "http://192.168.56.100:8080/",
+               user = "administrator", password = "datashield_test&",
+               table = "CNSIM.CNSIM1", driver = "OpalDriver")
+builder$append(server = "study2",
+               url = "http://192.168.56.100:8080/",
+               user = "administrator", password = "datashield_test&",
+               table = "CNSIM.CNSIM2", driver = "OpalDriver")
+builder$append(server = "study3",
+               url = "http://192.168.56.100:8080/",
+               user = "administrator", password = "datashield_test&",
+               table = "CNSIM.CNSIM3", driver = "OpalDriver")
+
+logindata <- builder$build()
+
+# Log onto the remote Opal training servers
+connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D")
+
+# Retrieving information on variable classes in the specified data.frame
+datashield_descriptive(df = "D", dsfunction = ds.class)
+
+
+# Retrieving information on how many NAs are present in each variable in the specified data.frame
+datashield_descriptive(df = "D", dsfunction = ds.numNA)
+
+
+# Clear the Datashield R sessions and logout
+datashield.logout(connections)
+
+}
+}
+\author{
+Sofia Siampani (Max-Delbrueck-Center, Berlin), Florian Schwarz (German Institute of Human Nutrition, Potsdam-Rehbruecke)
 }
