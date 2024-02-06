@@ -1,21 +1,19 @@
 Package: datashieldDescriptives
 Type: Package
-Title: DataSHIELD desctiptive functions
+Title: DataSHIELD descriptive functions
 Version: 0.1.0
 Author: Sofia Siampani
-License: GPL-3 + file LICENSE
+License: GPL-3
 Description: This package adds some convenience for analysts running DataSHIELD aggregate functions.
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 3.1)
+    R (>= 3.6)
 Imports:
-  dsBaseClient (>= 6.1.0),
   dplyr (>= 1.0.2),
   plyr,
   tibble,
-  tidyr,
-  DSI
+  tidyr
 Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
