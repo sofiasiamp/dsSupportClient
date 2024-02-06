@@ -13,6 +13,7 @@ Depends:
     R (>= 3.6)
 Imports:
   dsBaseClient,
+  DSI,
   dplyr (>= 1.0.2),
   plyr,
   tibble,

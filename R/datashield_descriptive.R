@@ -12,6 +12,7 @@
 #' @return A table with the output of the function. If more than one study is connected, they are joined in one table.
 #' @author Sofia Siampani (Max-Delbrueck-Center, Berlin), Florian Schwarz (German Institute of Human Nutrition, Potsdam-Rehbruecke)
 #' @import plyr
+#' @importFrom utils write.csv
 #' @examples
 #' \dontrun{
 #'
@@ -63,7 +64,7 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
 
   if(is.null(datasources)){
-    datasources <- datashield.connections_find()
+    datasources <- DSI::datashield.connections_find()
   }
 
 
@@ -112,7 +113,7 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
 
   if (save == TRUE){
-    write.csv(summary, file = paste0(as.character(substitute(dsfunction)),"_overview.csv"), row.names = TRUE)
+    utils::write.csv(summary, file = paste0(as.character(substitute(dsfunction)),"_overview.csv"), row.names = TRUE)
     print(paste0("The overview file ", paste0("'",as.character(substitute(dsfunction)),"_overview.csv'")," has been saved at ",getwd(), "."))
   }
 

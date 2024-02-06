@@ -9,7 +9,7 @@ datashield_table(df = "D", datasources = NULL)
 \arguments{
 \item{df}{specifies the  df that was assigned in the login, default is "D"}
 
-\item{opal_connection}{An opal connection}
+\item{datasources}{An opal connection}
 }
 \value{
 runs the datashield function ds.table() on all categorical variables of all studies and outputs a table with the outcome

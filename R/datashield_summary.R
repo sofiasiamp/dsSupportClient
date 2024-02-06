@@ -12,6 +12,7 @@
 #' It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection
 #' @return a list with the summary of each variable
 #' @author Sofia Siampani (Max-Delbrueck-Center, Berlin), Florian Schwarz (German Institute of Human Nutrition, Potsdam-Rehbruecke)
+#' @importFrom utils write.csv
 #' @examples
 #' \dontrun{
 #'
@@ -57,7 +58,7 @@ datashield_summary<- function(df = "D", datasources = NULL, save = FALSE){
 
 
   if(is.null(datasources)){
-    datasources <- datashield.connections_find()
+    datasources <- DSI::datashield.connections_find()
   }
 
 
@@ -92,7 +93,7 @@ datashield_summary<- function(df = "D", datasources = NULL, save = FALSE){
 
     summary[[as.name(paste0(datasources[[p]]@name))]] <- y
     if (save == TRUE){
-      write.csv(as.matrix(y), paste0(datasources[[p]]@name,"_summary.csv"), row.names = TRUE)
+      utils::write.csv(as.matrix(y), paste0(datasources[[p]]@name,"_summary.csv"), row.names = TRUE)
       print(paste0("The summary file ", paste0("'",datasources[[p]]@name,"_summary.csv'")," has been saved at ",getwd(), "."))
     }
   }

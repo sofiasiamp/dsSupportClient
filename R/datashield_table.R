@@ -1,6 +1,6 @@
 #' Table function for categorical data
 #'
-#' @param opal_connection An opal connection
+#' @param datasources An opal connection
 #' @param df specifies the  df that was assigned in the login, default is "D"
 #' @return runs the datashield function ds.table() on all categorical variables of all studies and outputs a table with the outcome
 #' @export
@@ -11,7 +11,7 @@ datashield_table <- function(df = "D", datasources = NULL){
 
 
   if(is.null(datasources)){
-    datasources <- datashield.connections_find()
+    datasources <- DSI::datashield.connections_find()
   }
 
 
@@ -33,9 +33,9 @@ datashield_table <- function(df = "D", datasources = NULL){
 
     var <- paste0(df,"$",i)
 
-    numNA <- ds.numNA(var, datasources = datasources)
+    numNA <- dsBaseClient::ds.numNA(var, datasources = datasources)
 
-    length <- ds.length(var, datasources = datasources)
+    length <- dsBaseClient::ds.length(var, datasources = datasources)
 
     length <- length[length(length)]
 
@@ -52,7 +52,7 @@ datashield_table <- function(df = "D", datasources = NULL){
       next
     }
 
-    b <- ds.table(var, datasources = datasources, useNA = "always")
+    b <- dsBaseClient::ds.table(var, datasources = datasources, useNA = "always")
 
     b[["output.list"]][["TABLE_rvar.by.study_row.props"]] <- NULL
 
