@@ -12,6 +12,7 @@ LazyData: true
 Depends: 
     R (>= 3.6)
 Imports:
+  dsBaseClient,
   dplyr (>= 1.0.2),
   plyr,
   tibble,
@@ -20,6 +21,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 RoxygenNote: 7.2.3
+Remotes: datashield/dsBaseClient
 URL: https://github.com/sofiasiamp/datashieldDescriptives
 BugReports: https://github.com/sofiasiamp/datashieldDescriptives/issues
 Config/testthat/edition: 3
