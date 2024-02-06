@@ -17,7 +17,9 @@ Imports:
   tidyr,
   DSI
 Suggests:
-  rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 RoxygenNote: 7.2.3
 URL: https://github.com/sofiasiamp/datashieldDescriptives
 BugReports: https://github.com/sofiasiamp/datashieldDescriptives/issues
+Config/testthat/edition: 3
