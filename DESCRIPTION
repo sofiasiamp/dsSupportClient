@@ -3,6 +3,7 @@ Type: Package
 Title: DataSHIELD descriptive functions
 Version: 0.1.0
 Author: Sofia Siampani
+Maintainer: Sofia Siampani, Florian Schwarz
 License: GPL-3
 Description: This package adds some convenience for analysts running DataSHIELD aggregate functions.
 Encoding: UTF-8
