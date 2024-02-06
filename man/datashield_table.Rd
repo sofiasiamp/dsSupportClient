@@ -12,12 +12,8 @@ datashield_table(df = "D", datasources = NULL)
 \item{datasources}{An opal connection}
 }
 \value{
-runs the datashield function ds.table() on all categorical variables of all studies and outputs a table with the outcome
+runs the datashield function ds.table on all categorical variables of all studies and outputs a table with the outcome
 }
 \description{
 Table function for categorical data
-}
-\examples{
-ds.table(opals)
-
 }

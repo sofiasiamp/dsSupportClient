@@ -18,7 +18,8 @@ Imports:
   plyr,
   tibble,
   tidyr,
-  here
+  here,
+  remotes
 Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
