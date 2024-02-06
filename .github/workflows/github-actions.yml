@@ -14,7 +14,7 @@ on:
   pull_request:
     branches: [main, master]
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/15 * * * *'
 
 jobs:
   R-CMD-check:
@@ -61,6 +61,7 @@ jobs:
 
       - name: Test coverage
         run: |
+          install.packages('dsBaseClient', repos= 'http://cran.datashield.org', dependencies=TRUE)
           covr::codecov(
             quiet = FALSE,
             clean = FALSE,
