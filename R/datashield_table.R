@@ -1,12 +1,12 @@
-#' Table function for categorical data
 #'
+#' @title Table function for categorical data
 #' @param datasources An opal connection
 #' @param df specifies the  df that was assigned in the login, default is "D"
 #' @return runs the datashield function ds.table() on all categorical variables of all studies and outputs a table with the outcome
 #' @export
 #' @import dplyr
-#' @examples ds.table(opals)
 #'
+
 datashield_table <- function(df = "D", datasources = NULL){
 
 
