@@ -49,7 +49,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck, any::covr
+          extra-packages: any::rcmdcheck, any::covr, any::remotes
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
@@ -62,8 +62,7 @@ jobs:
 
       - name: Test coverage
         run: |
-          install.packages('dsBaseClient', repos= 'http://cran.datashield.org', dependencies=TRUE)
-          install.packages('dsBase', repos= 'http://cran.datashield.org', dependencies=TRUE)
+          remotes::install_github("datashield/dsBase", ref = "6.3.0", dependencies=TRUE)
           covr::codecov(
             quiet = FALSE,
             clean = FALSE,
