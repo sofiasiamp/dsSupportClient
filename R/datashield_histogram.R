@@ -5,6 +5,8 @@
 #' @return It creates a directory with subdirectories of each study, containing histograms of all variables
 #' @export
 #' @importFrom grDevices dev.off png
+#' @import DSI
+#' @import dsBaseClient
 #'
 
 datashield_histogram<- function(datasources = NULL, method = "deterministic" ) {
