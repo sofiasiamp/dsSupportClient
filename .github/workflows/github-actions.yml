@@ -62,7 +62,7 @@ jobs:
 
       - name: Test coverage
         run: |
-          remotes::install_github("datashield/dsBase", ref = "6.3.0", dependencies=TRUE)
+          #remotes::install_github("datashield/dsBase", ref = "6.3.0", dependencies=TRUE)
           covr::codecov(
             quiet = FALSE,
             clean = FALSE,

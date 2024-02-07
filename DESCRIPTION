@@ -13,6 +13,7 @@ Depends:
     R (>= 3.6)
 Imports:
   dsBaseClient,
+  dsBase,
   DSI,
   dplyr (>= 1.0.2),
   plyr,
@@ -25,7 +26,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 RoxygenNote: 7.2.3
-Remotes: datashield/dsBaseClient
+Remotes: datashield/dsBaseClient, datashield/dsBase
 URL: https://github.com/sofiasiamp/datashieldDescriptives
 BugReports: https://github.com/sofiasiamp/datashieldDescriptives/issues
 Config/testthat/edition: 3
