@@ -19,7 +19,8 @@ Imports:
   tibble,
   tidyr,
   here,
-  remotes
+  remotes,
+  devtools
 Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
