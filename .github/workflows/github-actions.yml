@@ -63,6 +63,7 @@ jobs:
       - name: Test coverage
         run: |
           install.packages('dsBaseClient', repos= 'http://cran.datashield.org', dependencies=TRUE)
+          install.packages('dsBase', repos= 'http://cran.datashield.org', dependencies=TRUE)
           covr::codecov(
             quiet = FALSE,
             clean = FALSE,
