@@ -15,7 +15,7 @@ Data4$Sex <- as.factor(Data4$Sex)
 
 #### Defining the server-side data
 
-dslite.server <- DSLite::newDSLiteServer(tables=list(Data1=Data1,
+dslite.server <<- DSLite::newDSLiteServer(tables=list(Data1=Data1,
                                              Data2=Data2,
                                              Data3=Data3,
                                              Data4=Data4))
@@ -37,4 +37,4 @@ logindata.dslite.data <- data.frame(server = c("Server1", "Server2", "Server3", 
 
 
 #### Login to the 4 different DSLite Servers
-conns <- DSI::datashield.login(logindata.dslite.data, assign=TRUE, symbol = "D")
+conns <<- DSI::datashield.login(logindata.dslite.data, assign=TRUE, symbol = "D")
