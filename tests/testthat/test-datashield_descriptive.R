@@ -3,7 +3,7 @@
 
 test_that("datashield_descriptive Errors", {
 
-  case1 <- datashield_descriptive(df = "D", dsfunction = ds.class, datasources = conns[c(1:3)])
+  case1 <- datashield_descriptive(df = "D", dsfunction = ds.class)
 
   df_comparison <- data.frame(Server1.class = c("integer", "factor", "integer", "numeric"),
                               Server2.class = c("integer", "factor", "integer", "numeric"),

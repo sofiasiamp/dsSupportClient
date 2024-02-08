@@ -7,14 +7,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
+
 #
-# Datashield test suite set up
+# Tests
 #
 
-#source("dstest_functions/ds_expect_variables.R")
-source(here::here("tests/testthat/connection_to_datasets/login_details.R"))
-source(here::here("tests/testthat/connection_to_datasets/init_testing_datasets.R"))
-#source("connection_to_datasets/init_studies_datasets.R")
-#source("connection_to_datasets/init_discordant_datasets.R")
+ds_expect_variables <- function(expected.variables)
+{
+    studies.current.varables <- ds.ls()
 
-connect.all.datasets()
+    for (study.current.varables in studies.current.varables) {
+        expect_setequal(study.current.varables$objects.found, expected.variables)
+    }
+}

@@ -10,6 +10,7 @@
 #### In order to check for datashieldDescriptives to work with multiple dsBase versions, adaptation might be necessary
 #remotes::install_github("datashield/dsBase", ref = "6.3.0", dependencies=TRUE)
 remotes::install_github('datashield/DSLite')
+remotes::install_github('datashield/DSOpal')
 
 
 
@@ -17,6 +18,7 @@ library(testthat)
 library(dsBaseClient)
 library(dsBase)
 library(DSLite)
+library(DSOpal)
 library(DSI)
 library(datashieldDescriptives)
 
