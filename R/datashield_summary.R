@@ -13,6 +13,7 @@
 #' @return a list with the summary of each variable
 #' @author Sofia Siampani (Max-Delbrueck-Center, Berlin), Florian Schwarz (German Institute of Human Nutrition, Potsdam-Rehbruecke)
 #' @importFrom utils write.csv
+#' @import methods
 #' @examples
 #' \dontrun{
 #'
@@ -67,8 +68,8 @@ datashield_summary<- function(df = "D", datasources = NULL, save = FALSE){
   }
 
 
-  #Check whether object are present in all datasources
-  defined <- dsBaseClient:::isDefined(datasources, df)
+  #Check whether object are present in all datasources: waiting for function to be exported in dsBaseClient, otherwise R CMD Check failure
+  #defined <- dsBaseClient:::isDefined(datasources, df)
 
 
 

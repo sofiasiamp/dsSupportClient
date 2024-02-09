@@ -24,7 +24,7 @@ datashield_table <- function(df = "D", datasources = NULL){
   classes <- datashield_descriptive(df = df, dsfunction = ds.class, datasources = datasources)
 
   classes <- classes %>%
-    dplyr::filter_all(all_vars(.=="factor"))
+    dplyr::filter_all(all_vars("factor"))
 
   variables <- rownames(classes)
 

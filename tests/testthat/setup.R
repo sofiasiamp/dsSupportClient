@@ -3,10 +3,10 @@
 
 
 #### Loading the test datasets
-Data1 <- read.csv(here::here("tests/testthat/testsets", "Study1.csv"), sep = ";", dec = ",")
-Data2 <- read.csv(here::here("tests/testthat/testsets", "Study2.csv"), sep = ";", dec = ",")
-Data3 <- read.csv(here::here("tests/testthat/testsets", "Study3.csv"), sep = ";", dec = ",")
-Data4 <- read.csv(here::here("tests/testthat/testsets", "Study4.csv"), sep = ";", dec = ",")
+Data1 <- read.csv("testsets/Study1.csv", sep = ";", dec = ",")
+Data2 <- read.csv("testsets/Study2.csv", sep = ";", dec = ",")
+Data3 <- read.csv("testsets/Study3.csv", sep = ";", dec = ",")
+Data4 <- read.csv("testsets/Study4.csv", sep = ";", dec = ",")
 
 Data1$Sex <- as.factor(Data1$Sex)
 Data2$Sex <- as.factor(Data2$Sex)

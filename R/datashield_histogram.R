@@ -7,6 +7,7 @@
 #' @importFrom grDevices dev.off png
 #' @import DSI
 #' @import dsBaseClient
+#' @import methods
 #'
 
 datashield_histogram<- function(datasources = NULL, method = "deterministic" ) {

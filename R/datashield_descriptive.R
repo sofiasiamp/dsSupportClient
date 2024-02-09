@@ -11,7 +11,8 @@
 #' @param save If TRUE, the output is saved in the working directory as a csv file.
 #' @return A table with the output of the function. If more than one study is connected, they are joined in one table.
 #' @author Sofia Siampani (Max-Delbrueck-Center, Berlin), Florian Schwarz (German Institute of Human Nutrition, Potsdam-Rehbruecke)
-#' @import plyr
+#' @import dplyr
+#' @import purrr
 #' @importFrom utils write.csv
 #' @examples
 #' \dontrun{
@@ -78,8 +79,8 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
   }
 
 
-  #Check whether object are present in all datasources
-  defined <- dsBaseClient:::isDefined(datasources, df)
+  #Check whether object are present in all datasources: waiting for function to be exported in dsBaseClient, otherwise R CMD Check failure
+  #defined <- dsBaseClient:::isDefined(datasources, df)
 
 
   summary <- data.frame()
@@ -105,7 +106,7 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
   }
 
 
-  summary <- plyr::join_all(join, by = "rn", type = "full")
+  summary <- purrr::reduce(join, full_join, by = "rn")
 
 
   rownames(summary) <- summary$rn

@@ -16,15 +16,17 @@ Imports:
   dsBase,
   DSI,
   dplyr (>= 1.0.2),
-  plyr,
   tibble,
-  tidyr,
+  purrr,
   here,
   remotes,
-  devtools
+  devtools, 
+  methods
 Suggests:
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    DSLite,
+    DSOpal
 RoxygenNote: 7.2.3
 Remotes: datashield/dsBaseClient, datashield/dsBase
 URL: https://github.com/sofiasiamp/datashieldDescriptives
