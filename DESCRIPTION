@@ -10,7 +10,7 @@ Description: This package adds some convenience for analysts running DataSHIELD 
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 3.6)
+    R (>= 4.0.0)
 Imports:
   dsBaseClient,
   dsBase,
