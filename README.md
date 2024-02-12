@@ -4,6 +4,8 @@
 # datashieldDescriptives
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/FlorianSchw/datashieldDescriptives/actions/workflows/github-actions.yml/badge.svg)](https://github.com/FlorianSchw/datashieldDescriptives/actions/workflows/github-actions.yml)
+[![codecov](https://codecov.io/gh/FlorianSchw/datashieldDescriptives/graph/badge.svg?token=P962EIKWFI)](https://codecov.io/gh/FlorianSchw/datashieldDescriptives)
 <!-- badges: end -->
 
 These R client-side functions where created to help automate the

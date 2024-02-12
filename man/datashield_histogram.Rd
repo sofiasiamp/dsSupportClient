@@ -4,19 +4,16 @@
 \alias{datashield_histogram}
 \title{DataSHIELD helper function for histograms}
 \usage{
-datashield_histogram(opal_connection, method = "deterministic")
+datashield_histogram(datasources = NULL, method = "deterministic")
 }
 \arguments{
-\item{opal_connection}{An Opal connection}
+\item{datasources}{An Opal connection}
 
-\item{method}{}
+\item{method}{Type of method for building the histogram}
 }
 \value{
 It creates a directory with subdirectories of each study, containing histograms of all variables
 }
 \description{
 DataSHIELD helper function for histograms
-}
-\examples{
-datashield_histogram(opal_connection = opal_connection)
 }
