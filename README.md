@@ -4,8 +4,8 @@
 # datashieldDescriptives
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/FlorianSchw/datashieldDescriptives/actions/workflows/github-actions.yml/badge.svg)](https://github.com/FlorianSchw/datashieldDescriptives/actions/workflows/github-actions.yml)
-[![codecov](https://codecov.io/gh/FlorianSchw/datashieldDescriptives/graph/badge.svg?token=P962EIKWFI)](https://codecov.io/gh/FlorianSchw/datashieldDescriptives)
+[![R-CMD-check](https://github.com/sofiasiamp/datashieldDescriptives/actions/workflows/github-actions.yml/badge.svg)](https://github.com/sofiasiamp/datashieldDescriptives/actions/workflows/github-actions.yml)
+[![codecov](https://codecov.io/gh/sofiasiamp/datashieldDescriptives/graph/badge.svg?token=JIMQK79E0H)](https://codecov.io/gh/sofiasiamp/datashieldDescriptives)
 <!-- badges: end -->
 
 These R client-side functions where created to help automate the
@@ -33,5 +33,5 @@ This is a basic example on how to use it:
 
 ``` r
 #library(datashieldDescriptives)
-#datashield_descriptive(dsfunction = ds.class, opal_connection = opals, df = "D")
+#datashield_descriptive(dsfunction = ds.class, datasources = opals, df = "D")
 ```
