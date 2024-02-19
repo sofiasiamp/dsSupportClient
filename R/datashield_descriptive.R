@@ -93,10 +93,11 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
     y <- data.frame()
 
-    for(i in dsBaseClient::ds.colnames(df,datasources[p])[[1]]) {
+
+    for(i in dsBaseClient::ds.colnames(df,datasources = datasources[p])[[1]]) {
 
       variable <- paste0(df,"$",i)
-      y[i,colNames] <- dsfunction(variable)[1]
+      y[i,colNames] <- dsfunction(variable, datasources= datasources[p])[1]
 
 
     }
