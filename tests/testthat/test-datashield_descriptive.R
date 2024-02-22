@@ -19,7 +19,7 @@ test_that("datashield_descriptive Errors", {
   df_comparison2 <- data.frame(Server1.class = c("integer", "factor", "integer", "numeric"),
                                Server2.class = c("integer", "factor", "integer", "numeric"),
                                Server3.class = c("integer", "factor", "integer", "numeric"),
-                               Server4.class = c("integer", "factor", "integer", "numeric"))
+                               Server4.class = c("integer", "factor", "integer", "character"))
 
   row.names(df_comparison2) <- c("ID", "Sex", "Age", "Weight")
 
