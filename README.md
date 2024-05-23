@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# datashieldDescriptives
+# dsSupportClient
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/sofiasiamp/datashieldDescriptives/actions/workflows/github-actions.yml/badge.svg)](https://github.com/sofiasiamp/datashieldDescriptives/actions/workflows/github-actions.yml)
@@ -24,7 +24,7 @@ library(remotes)
 And then install this Github repository
 
 ``` r
-remotes::install_github("sofiasiamp/datashieldDescriptives")
+remotes::install_github("sofiasiamp/dsSupportClient")
 ```
 
 ## Example
@@ -32,6 +32,6 @@ remotes::install_github("sofiasiamp/datashieldDescriptives")
 This is a basic example on how to use it:
 
 ``` r
-#library(datashieldDescriptives)
+#library(dsSupportClient)
 #datashield_descriptive(dsfunction = ds.class, datasources = opals, df = "D")
 ```
