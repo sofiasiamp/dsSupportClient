@@ -1,6 +1,4 @@
 #table <- rse_combined(formula = 'S_W_INDEX ~ WEIGHT + AGE + SEX', datasources = datasources, data = "D")
-
-
 robust_combined_HC1_dev <- function(formula, datasources, data) {
   start.time <- proc.time()[3]
 
