@@ -79,15 +79,16 @@ datashield_summary<- function(df = "D", datasources = NULL, save = FALSE){
 
 
     y <- data.frame()
-
-    for (i in dsBaseClient::ds.colnames(df)[[1]]){
+    study <- datasources[p]
+    colNames <- ds.colnames(df,study)
+    for (i in colNames[[1]]){
 
       variable <- paste0(df,"$",i)
-      a <- dsBaseClient::ds.class(variable)
+      a <- dsBaseClient::ds.class(variable, study)
 
-      if ((a == "numeric" || a == "integer") && (dsBaseClient::ds.numNA(variable) < dsBaseClient::ds.length(variable)[[1]])){
-        a <- unlist(dsBaseClient::ds.summary(variable))
-        y[i, c(names(a),"Standard deviation")] <- c(a, sqrt(dsBaseClient::ds.var(variable)[["Variance.by.Study"]][1]))
+      if ((a == "numeric" || a == "integer") && dsBaseClient::ds.numNA(variable, study) < dsBaseClient::ds.length(variable, datasources=study)[[1]]){
+        a <- unlist(dsBaseClient::ds.summary(variable, datasources=study))
+        y[i, c(names(a),"Standard deviation")] <- c(a, sqrt(dsBaseClient::ds.var(variable, datasources=study)[["Variance.by.Study"]][1]))
 
       }
     }
