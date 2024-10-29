@@ -1,14 +1,13 @@
 #'
-#' @title Descriptive function for DataSHIELD analysts
+#' @title Wrapper function for DataSHIELD analysts
 #' @description The function summarises the outcome of variable-level aggregate DataSHIELD functions.
-#' @details datashield_descriptive functions creates summaries for all variables in a data.frame with respect to certain
-#' DataSHIELD aggregate functions providing an improved overview for the DataSHIELD analyst.
-#' @param dsfunction The aggregate DataSHIELD function you want to run to receive information (e.g. ds.class).
+#' @details ds.wrapper wraps around DataSHIELD functions and creates summaries for all variables in a data.frame, providing an improved overview for the DataSHIELD analyst.
+#' @param ds_function The aggregate DataSHIELD function you want to run to receive information (e.g. ds.class, ds.numNA).
 #' @param datasources A list of \code{\link{DSConnection-class}} objects obtained after login.
 #' If the \code{datasources} argument is not specified the default set of connections will be
 #' used: see \code{\link{datashield.connections_default}}.
 #' @param df A data.frame on the server-side. Default is "D".
-#' @param save If TRUE, the output is saved in the working directory as a csv file.
+#' @param save If TRUE, the output is saved in the working directory as a csv file. Default is FALSE
 #' @return A table with the output of the function. If more than one study is connected, they are joined in one table.
 #' @author Sofia Siampani (Max-Delbrueck-Center, Berlin), Florian Schwarz (German Institute of Human Nutrition, Potsdam-Rehbruecke)
 #' @import dplyr
@@ -24,7 +23,7 @@
 #' require("DSI")
 #' require("DSOpal")
 #' require("dsBaseClient")
-#' require("datashieldDescriptives")
+#' require("dsSupportClient")
 #'
 #' builder <- DSI::newDSLoginBuilder()
 #' builder$append(server = "study1",
@@ -46,11 +45,11 @@
 #' connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D")
 #'
 #' # Retrieving information on variable classes in the specified data.frame
-#' datashield_descriptive(df = "D", dsfunction = ds.class)
+#' ds.wrapper(df = "D", ds_function = ds.class)
 #'
 #'
 #' # Retrieving information on how many NAs are present in each variable in the specified data.frame
-#' datashield_descriptive(df = "D", dsfunction = ds.numNA)
+#' ds.wrapper(df = "D", ds_function = ds.numNA)
 #'
 #'
 #' # Clear the Datashield R sessions and logout
@@ -61,7 +60,7 @@
 #'
 
 
-datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NULL,  save = FALSE){
+ds.wrapper <- function(df = "D", ds_function = NULL, datasources = NULL,  save = FALSE){
 
 
   if(is.null(datasources)){
@@ -74,7 +73,7 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
   }
 
 
-  if(is.null(dsfunction)){
+  if(is.null(ds_function)){
     stop("You need to specify an aggregate DataSHIELD function.")
   }
 
@@ -88,7 +87,7 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
   for (p in 1:length(datasources)){
 
-    colNames <- paste0(datasources[[p]]@name,".",(strsplit(as.character(substitute(dsfunction)), ".",fixed =TRUE))[[1]][2])
+    colNames <- paste0(datasources[[p]]@name,".",(strsplit(as.character(substitute(ds_function)), ".",fixed =TRUE))[[1]][2])
 
 
     y <- data.frame()
@@ -97,7 +96,7 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
     for(i in dsBaseClient::ds.colnames(df,datasources = datasources[p])[[1]]) {
 
       variable <- paste0(df,"$",i)
-      y[i,colNames] <- dsfunction(variable, datasources= datasources[p])[1]
+      y[i,colNames] <- ds_function(variable, datasources= datasources[p])[1]
 
 
     }
@@ -115,8 +114,8 @@ datashield_descriptive <- function(df = "D", dsfunction = NULL, datasources = NU
 
 
   if (save == TRUE){
-    utils::write.csv(summary, file = paste0(as.character(substitute(dsfunction)),"_overview.csv"), row.names = TRUE)
-    print(paste0("The overview file ", paste0("'",as.character(substitute(dsfunction)),"_overview.csv'")," has been saved at ",getwd(), "."))
+    utils::write.csv(summary, file = paste0(as.character(substitute(ds_function)),"_overview.csv"), row.names = TRUE)
+    print(paste0("The overview file ", paste0("'",as.character(substitute(ds_function)),"_overview.csv'")," has been saved at ",getwd(), "."))
   }
 
   return(summary)
