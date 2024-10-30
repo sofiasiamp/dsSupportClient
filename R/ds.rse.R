@@ -1,6 +1,6 @@
 #' Robust Standard Errors HC1
 #'
-#' @param formula The formula to perform RSE e.g. "AGE ~ BMI + SEX"
+#' @param formula The formula to perform RSE e.g. "Age ~ Sex + Weight"
 #' @param datasources A list of \code{\link{DSConnection-class}} objects obtained after login.
 #' If the \code{datasources} argument is not specified the default set of connections will be
 #' used: see \code{\link{datashield.connections_default}}.
@@ -10,7 +10,7 @@
 #' @return robust standard errors of the formula
 #' @export
 #'
-#' @examples ds.rse(formula = "AGE ~ BMI + SEX", datasources=connections, type = "split", data="D")
+#'
 ds.rse <- function(formula, datasources, type = "split", data) {
 
 

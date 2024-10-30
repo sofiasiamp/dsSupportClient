@@ -7,7 +7,7 @@
 ds.rse(formula, datasources, type = "split", data)
 }
 \arguments{
-\item{formula}{The formula to perform RSE e.g. "AGE ~ BMI + SEX"}
+\item{formula}{The formula to perform RSE e.g. "Age ~ Sex + Weight"}
 
 \item{datasources}{A list of \code{\link{DSConnection-class}} objects obtained after login.
 If the \code{datasources} argument is not specified the default set of connections will be
@@ -22,7 +22,4 @@ robust standard errors of the formula
 }
 \description{
 Robust Standard Errors HC1
-}
-\examples{
-ds.rse(formula = "AGE ~ BMI + SEX", datasources=connections, type = "split", data="D")
 }

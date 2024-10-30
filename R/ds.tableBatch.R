@@ -21,7 +21,7 @@ ds.tableBatch <- function(df = "D", datasources = NULL){
   }
 
 
-  classes <- datashield_descriptive(df = df, dsfunction = ds.class, datasources = datasources)
+  classes <- ds.wrapper(df = df, ds_function = ds.class, datasources = datasources)
 
   classes <- classes %>%
     dplyr::filter_all(all_vars("factor"))
