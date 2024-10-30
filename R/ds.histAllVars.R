@@ -10,7 +10,7 @@
 #' @import methods
 #'
 
-datashield_histogram<- function(datasources = NULL, method = "deterministic" ) {
+ds.histAllVars<- function(datasources = NULL, method = "deterministic" ) {
 
 
   if(is.null(datasources)){

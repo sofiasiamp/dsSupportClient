@@ -8,7 +8,7 @@
 #' @import dsBaseClient
 #'
 
-datashield_table <- function(df = "D", datasources = NULL){
+ds.tableBatch <- function(df = "D", datasources = NULL){
 
 
   if(is.null(datasources)){

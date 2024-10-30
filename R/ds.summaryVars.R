@@ -1,14 +1,14 @@
 #'
 #' @title Executes ds.summary function for variables in a data.frame
 #' @description The function executes the ds.summary function for all numeric or integer variables of a data.frame.
-#' @details datashield_summary analyses the classes of variables of a server-side data.frame and executes the ds.summary
+#' @details ds.summaryVars analyses the classes of variables of a server-side data.frame and executes the ds.summary
 #' function for all variables which are of type 'numeric' or 'integer'. Additionally, it also provides the standard deviation
 #' for those variables.
 #' @param datasources A list of \code{\link{DSConnection-class}} objects obtained after login.
 #' If the \code{datasources} argument is not specified the default set of connections will be
 #' used: see \code{\link{datashield.connections_default}}.
 #' @param df A data.frame on the server-side.
-#' @param save if TRUE, the output is saved in the working directory as a csv file
+#' @param save if TRUE, the output is saved in the working directory as a csv fil. Default is FALSE.
 #' It runs the datashield function ds.summary()and calculates the standard deviation in all numeric and integer variables of each OpalConnection
 #' @return a list with the summary of each variable
 #' @author Sofia Siampani (Max-Delbrueck-Center, Berlin), Florian Schwarz (German Institute of Human Nutrition, Potsdam-Rehbruecke)
@@ -46,7 +46,7 @@
 #' connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D")
 #'
 #' # Retrieving information on variable classes in the specified data.frame
-#' datashield_summary(df = "D", save = TRUE)
+#' ds.summaryVars(df = "D", save = TRUE)
 #'
 #' # Clear the Datashield R sessions and logout
 #' datashield.logout(connections)
@@ -55,7 +55,7 @@
 #' @export
 #'
 
-datashield_summary<- function(df = "D", datasources = NULL, save = FALSE){
+ds.summaryVars<- function(df = "D", datasources = NULL, save = FALSE){
 
 
   if(is.null(datasources)){
