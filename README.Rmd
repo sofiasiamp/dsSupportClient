@@ -29,7 +29,7 @@ library(remotes)
 ```
 And then install this Github repository
 ``` r
-remotes::install_github("sofiasiamp/datashieldDescriptives")
+remotes::install_github("sofiasiamp/dsSupportClient")
 ```
 
 ## Example
@@ -37,6 +37,6 @@ remotes::install_github("sofiasiamp/datashieldDescriptives")
 This is a basic example on how to use it:
 
 ```{r example}
-#library(datashieldDescriptives)
-#datashield_descriptive(dsfunction = ds.class, opal_connection = opals, df = "D")
+#library(dsSupportClient)
+#ds.wrapper(ds_function = ds.class, datasources = connections, df = "D")
 ```

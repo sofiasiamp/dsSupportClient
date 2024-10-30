@@ -24,7 +24,7 @@
 #' require("DSI")
 #' require("DSOpal")
 #' require("dsBaseClient")
-#' require("datashieldDescriptives")
+#' require("dsSupportClient")
 #'
 #' builder <- DSI::newDSLoginBuilder()
 #' builder$append(server = "study1",
