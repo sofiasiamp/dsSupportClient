@@ -20,6 +20,6 @@ library(dsBase)
 library(DSLite)
 library(DSOpal)
 library(DSI)
-library(datashieldDescriptives)
+library(dsSupportClient)
 
-test_check("datashieldDescriptives")
+test_check("dsSupportClient")
