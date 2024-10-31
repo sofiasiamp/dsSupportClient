@@ -4,13 +4,13 @@
 # dsSupportClient
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/sofiasiamp/dsSupportClient/actions/workflows/github-actions.yml/badge.svg)](https://github.com/sofiasiamp/dsSupportClient/actions/workflows/github-actions.yml)
-[![codecov](https://codecov.io/gh/sofiasiamp/dsSupportClient/graph/badge.svg?token=JIMQK79E0H)](https://codecov.io/gh/sofiasiamp/dsSupportClient)
 <!-- badges: end -->
 
-These R client-side functions where created to help automate the
-production of descriptive statistics by running already existing
-DataSHIELD functions on any number of harmonized datasets.
+The `dsSupportClient` package offers a set of client-side functions that
+wrap around DataSHIELD functions from `dsBase`. It is designed to
+streamline the production of descriptive statistics across multiple
+harmonized datasets. Some functions are still in development and may be
+refined based on user feedback.
 
 ## Installation
 
@@ -32,6 +32,6 @@ remotes::install_github("sofiasiamp/dsSupportClient")
 This is a basic example on how to use it:
 
 ``` r
-#library(dsSupportClient)
-#datashield_descriptive(dsfunction = ds.class, datasources = opals, df = "D")
+library(dsSupportClient)
+ds.wrapper(ds_function = ds.class, datasources = connections, df = "D")
 ```
